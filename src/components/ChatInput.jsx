@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-const ChantInput = ({onSubmit}) => {
+const ChatInput = ({onSubmit}) => {
     const [question, setQuestion] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();//It will prevent the default behaviour of submint before clicking submit button
@@ -11,7 +11,7 @@ const ChantInput = ({onSubmit}) => {
     }
   return (
     <div className='container my-4'> 
-        <div onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
               <div className='form-group'>
                   <label htmlFor="question">Ask a Question</label>
                   <input type="text"
@@ -24,9 +24,9 @@ const ChantInput = ({onSubmit}) => {
               <button type='submit' className='btn btn-primary mt-2'>
                   Submit
               </button>
-        </div>
+        </form>
     </div>
   )
 }
 
-export default ChantInput
+export default ChatInput

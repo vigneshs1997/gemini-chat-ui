@@ -1,7 +1,9 @@
 
 import './App.css'
-import ChantInput from './components/ChantInput'
+import ChatInput from './components/ChatInput'
 import { useState } from 'react'
+import ChatResponse from './components/ChatResponse';
+import { fetchChatResponse } from './services/api';
 function App() {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -9,8 +11,10 @@ function App() {
   const handleQuestionSubmit = async (question) => {
     setLoading(true);
     setResponse(null);
+    
     try {
-      //API
+      const apiResponse = await fetchChatResponse(question);
+      setResponse(apiResponse);
     } catch (error) {
       alert("Failed to get response");
     } finally {
@@ -24,8 +28,10 @@ function App() {
         <h1>Gemini AI ChatBot</h1>
       </header>
       {/* Input From User */}
-      <ChantInput onSubmit={handleQuestionSubmit} />
+      <ChatInput onSubmit={handleQuestionSubmit} />
+      {loading && <h3>Loading.....</h3>}
       {/* Response */}
+      <ChatResponse response={response} />
     </div>
   )
 }
