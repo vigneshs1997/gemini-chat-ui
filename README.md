@@ -16,6 +16,8 @@ This template provides a minimal setup to get React working in Vite with HMR and
    npm run dev
 ### 5.To install Bootstrap dependency
    npm i bootstrap@5.3.8
+### 6.To install axios(Library provides to use of HTTP calls)
+   npm install axios
 
 ## Git Commands
 ### 1.To initialize git
